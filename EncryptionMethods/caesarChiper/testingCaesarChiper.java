@@ -4,18 +4,20 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import interfaceUsed.encryptDecrypt;
+
 public class testingCaesarChiper {
 	String messageToEncode="sagar";
 	int shiftingBit=2;
 	char shiftingDirn='l';
 	String encodedMessage="qyeyp";
-	caesarChiper _caesarChiperTest=new caesarChiper(messageToEncode,shiftingBit,shiftingDirn);
+	encryptDecrypt _caesarChiperTest=new caesarChiper(messageToEncode,shiftingBit,shiftingDirn);
 	
 	@Test
 	public void test() {
 		_caesarChiperTest.startEncryption();
-		assertEquals(encodedMessage,_caesarChiperTest.getEncryptMessage());
+		assertEquals(encodedMessage,_caesarChiperTest.getEncryptedData());
 		_caesarChiperTest.startDecryption();
-		assertEquals(messageToEncode,_caesarChiperTest.getDecryptedMessage());
+		assertEquals(messageToEncode,_caesarChiperTest.getDecryptedData());
 	}
 }
