@@ -11,13 +11,10 @@ public class message  {
 	char[] charKey;
 	List<Integer>intKey=new ArrayList<Integer>(); 
 	int keyLength;
-	message(String message,String _key){
-		plainMessage=message;
+	message(String _key){
 		key=_key;
 		keyLength=_key.length();
-		charPlainMessage=plainMessage.toCharArray();
-		for(int index=0;index<charPlainMessage.length;index++)
-		intPlainMessage.add((int)charPlainMessage[index]);
+		
 		charKey=key.toCharArray();
 		for(int index=0;index<charKey.length;index++)
 		intKey.add((int)charKey[index]);
@@ -33,5 +30,11 @@ public class message  {
 	}
 	public char[] getCharPlainMessage() {
 		return charPlainMessage;
+	}
+	public void setMessage(String mes) {
+		plainMessage=mes;
+		charPlainMessage=plainMessage.toCharArray();
+		for(int index=0;index<charPlainMessage.length;index++)
+		intPlainMessage.add((int)charPlainMessage[index]);
 	}
 }

@@ -4,10 +4,12 @@ public class message {
 	String messageToSend;
 	int shiftBit;
 	char direction;
-	message(String message,int bit,char dirn){
-		messageToSend=message;
-		shiftBit=bit;
-		setshiftDirn(dirn);
+	message(){
+		shiftBit=2;
+		setshiftDirn('l');
+	}
+	public void setMessage(String mes) {
+		messageToSend=mes;
 	}
 	public String getMessageToSend() {
 		return messageToSend;

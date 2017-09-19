@@ -11,10 +11,11 @@ public class testingCaesarChiper {
 	int shiftingBit=2;
 	char shiftingDirn='l';
 	String encodedMessage="qyeyp";
-	encryptDecrypt _caesarChiperTest=new caesarChiper(messageToEncode,shiftingBit,shiftingDirn);
+	encryptDecrypt _caesarChiperTest=new caesarChiper();
 	
 	@Test
 	public void test() {
+		_caesarChiperTest.enterMessage(messageToEncode);
 		_caesarChiperTest.startEncryption();
 		assertEquals(encodedMessage,_caesarChiperTest.getEncryptedData());
 		_caesarChiperTest.startDecryption();

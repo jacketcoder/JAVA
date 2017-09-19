@@ -1,25 +1,21 @@
 package caesarChiper;
 
-public class caesarChiper {
+import interfaceUsed.encryptDecrypt;
+
+public class caesarChiper implements encryptDecrypt {
 	message _message;
 	encryptionAlgo _encryptionAlgo;
 	decryptionAlgo _decryptionAlgo;
 	int shiftBit,upperBoundary,lowerBoundary;
 	String  encryptMessage,messageToReceive;
-	caesarChiper(String sendingMessage,int shiftingBit,char dirn){
-		shiftBit=shiftingBit;
+	public caesarChiper(){
+		shiftBit='l';
 		upperBoundary=(int)'z';
 		lowerBoundary=(int)'a';
-		_message=new message(sendingMessage,shiftingBit,dirn);
+		_message=new message();
 		_encryptionAlgo=new encryptionAlgo();
 		_decryptionAlgo=new decryptionAlgo();
 		
-	}
-	public String  getEncryptMessage(){
-	return _encryptionAlgo.getEncryptMessage();
-	}
-	public String getDecryptedMessage() {
-		return _decryptionAlgo.getDecryptedMessage();
 	}
 	public void startEncryption() {
 		_encryptionAlgo.encryptMessage(_message.getMessageToSend(),
@@ -29,4 +25,19 @@ public class caesarChiper {
 		_decryptionAlgo.decryptMessage(_encryptionAlgo.getEncryptMessage(),
 				_message.getDirection(), _message.getShiftBit());
 		}
+	@Override
+	public String getEncryptedData() {
+		return _encryptionAlgo.getEncryptMessage();
+	}
+	@Override
+	public String getDecryptedData() {
+		// TODO Auto-generated method stub
+		return _decryptionAlgo.getDecryptedMessage();
+	}
+	@Override
+	public void enterMessage(String messageToEncrypt) {
+		_message.setMessage(messageToEncrypt);
+		// TODO Auto-generated method stub
+		
+	}
 }

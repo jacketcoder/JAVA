@@ -1,1 +1,12 @@
 /.metadata/
+/.recommenders/
+/AndroidApplication1/gen/
+/AndroidApplication1/nbandroid/
+/AndroidApplication2/gen/
+/AndroidApplication2/nbandroid/
+/JavaApplication2/nbproject/private/
+AndroidApplication1/
+
+AndroidApplication2/
+
+RemoteSystemsTempFiles/

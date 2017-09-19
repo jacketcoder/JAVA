@@ -8,11 +8,10 @@ import interfaceUsed.encryptDecrypt;
 
 public class testingRC4 {
 	 String data= "RC4PROGRAM";
-	 String key= "A";
-	 message _message=new message(data,key);
-	 encryptDecrypt _RC4=new RC4(_message);
+	 encryptDecrypt _RC4=new RC4();
 	@Test
 	public void test() {
+		_RC4.enterMessage(data);
 		_RC4.startEncryption();
 		//assertEquals(encodedMessage,_RC4.getEncryptedData());
 		_RC4.startDecryption();

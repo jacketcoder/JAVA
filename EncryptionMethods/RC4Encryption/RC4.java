@@ -4,14 +4,16 @@ public class RC4 implements encryptDecrypt {
 	message _message;
 	KSA _KSA;
 	PRGA _PRGA;
-	RC4(message m1){
-		_message=m1;
-		  _KSA=new KSA(_message.getKeyChar());
+	public RC4(){
+		 String key= "A";
+		  _message=new message(key);
+		  
+	}
+	public  void startEncryption() {
+		_KSA=new KSA(_message.getKeyChar());
 		  _PRGA=new PRGA(_message.getPlainMessage().length());
 		_KSA.scrambleStateVector();
 		_PRGA.generateStream(_KSA.getStateSize(),_KSA.getStateVector());
-	}
-	public  void startEncryption() {
 		_PRGA.encryptText(_message.getCharPlainMessage());
 	}
 	public void startDecryption() {
@@ -29,6 +31,12 @@ public class RC4 implements encryptDecrypt {
 	}
 	public String getDecryptedData() {
 		return new String(convertIntToText(_PRGA.getDecryptText()));
+		
+	}
+	@Override
+	public void enterMessage(String messageToEncrypt) {
+		_message.setMessage(messageToEncrypt);
+		// TODO Auto-generated method stub
 		
 	}
 }

@@ -7,7 +7,8 @@ public class Entry {
 			String message="httpfacebookcom";
 	        System.out.println("Starting caesarChiper");
 			System.out.println("Sending message"+" "+message);
-			encryptDecrypt _caesarChiper=new caesarChiper(message,2,'l');
+			encryptDecrypt _caesarChiper=new caesarChiper();
+			_caesarChiper.enterMessage(message);
 			_caesarChiper.startEncryption();
 			String encryptedMessage=_caesarChiper.getEncryptedData();
 			System.out.println("encryptedMessage is  "+encryptedMessage);
@@ -16,6 +17,7 @@ public class Entry {
 			System.out.println("breaking the caesarChiper code by brute attack");
 			breakingChiper _breakingChiper=new breakingChiper(_caesarChiper.getEncryptedData(),"http");
 			_breakingChiper.doBruteAttack();
+			
 			
 	 }
 }
