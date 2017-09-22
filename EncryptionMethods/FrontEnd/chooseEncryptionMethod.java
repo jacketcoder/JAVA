@@ -14,7 +14,7 @@ public class chooseEncryptionMethod {
 	JPanel panel ;
 	 String selectedAlgo;
 	 ShowEncryptionWindow _ShowEncryptionWindow;
-	Box verticalBox ;
+	Box verticalBox;
 	String[] encryptionsAlgoNames;
 	JFrame frame;
 	 ButtonGroup _buttonGroup=new ButtonGroup();
@@ -24,7 +24,7 @@ public class chooseEncryptionMethod {
 			this.frame=frame;
 			panel=new JPanel();
 			 encryptionsAlgoNames= EncAlgoNames;
-			encryptionsAlgoRButtons=new JRadioButton[EncAlgoNames.length];
+			 encryptionsAlgoRButtons=new JRadioButton[EncAlgoNames.length];
 			verticalBox = Box.createVerticalBox();
 			for(int index=0;index<EncAlgoNames.length;index++) {
 				encryptionsAlgoRButtons[index]=new JRadioButton(EncAlgoNames[index]);

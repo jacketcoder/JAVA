@@ -11,7 +11,7 @@ public class UI {
 		windowEntry.setSize(500,500);
 		Label label=new Label();
 		windowEntry.getContentPane().add(label, BorderLayout.CENTER);
-		String[] encryptionsAlgoNames= {"ASE","CaesarChiper","RC4_Encryption"};
+		String[] encryptionsAlgoNames= {"ASE","CaesarChiper","RC4_Encryption","simple hash","SHA3"};
 		chooseEncryptionMethod _chooseEncryptionMethod=new chooseEncryptionMethod(windowEntry,encryptionsAlgoNames);
 		windowEntry.add(_chooseEncryptionMethod.returnPanel());
 		windowEntry.setVisible(true);

@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import AES.ASE_algorithm;
 import RC4Encryption.RC4;
 import caesarChiper.caesarChiper;
+import hashFunction.hashAction;
+import hashingSHA.SHA3Hashing;
+import interfaceUsed.Hashing;
 import interfaceUsed.encryptDecrypt;
 
 public class ShowEncryptionWindow {
@@ -25,8 +28,11 @@ public class ShowEncryptionWindow {
 	JFrame windowEntry;
 	JLabel message,encryptedMessageL,decryptedMessageL;
 	encryptDecrypt _encryptDecrypt;
+	Hashing hashing;
 	JButton startProcess,closeWindow;
+	boolean encrypt;
 	ShowEncryptionWindow(int index){
+		
 		windowEntry=new JFrame(InitializeAlgo(index));
 		 label=new Label();
 		windowEntry.setSize(500,500);
@@ -42,7 +48,7 @@ public class ShowEncryptionWindow {
 		messageEntry=addTextBox(messageEntry);
 		panel.add(messageEntry);
 		
-
+		if(encrypt) {
 		encryptedMessageL=addLabelsOnFrame(encryptedMessageL,"encrypted message");
 		panel.add(encryptedMessageL);
 		encryptedMessage=addTextBox(encryptedMessage);
@@ -52,7 +58,13 @@ public class ShowEncryptionWindow {
 		panel.add(decryptedMessageL);
 		decryptedMessage=addTextBox(decryptedMessage);
 		panel.add(decryptedMessage);
-		
+		}
+		else {
+			decryptedMessageL=addLabelsOnFrame(decryptedMessageL,"hashed message");
+			panel.add(decryptedMessageL);
+			decryptedMessage=addTextBox(decryptedMessage);
+			panel.add(decryptedMessage);	
+		}
 		startProcess=new JButton(" Start "+windowEntry.getTitle());
 		panel.add(startProcess);
 		startProcess.addActionListener(new ActionListener(){
@@ -77,33 +89,59 @@ public class ShowEncryptionWindow {
 	void doAction() {
 		String messageToEncrypt=messageEntry.getText();
 		//messageEntry.setText("Ada");
+		if(encrypt) {
 		System.out.println("Sending message"+" "+messageToEncrypt);
 		_encryptDecrypt.enterMessage(messageToEncrypt);
 		_encryptDecrypt.startEncryption();
 		_encryptDecrypt.startDecryption();
 		encryptedMessage.setText(_encryptDecrypt.getEncryptedData());
 		decryptedMessage.setText(_encryptDecrypt.getDecryptedData());
-		
+		}
+		else {
+			System.out.println("message to hash"+" "+messageToEncrypt);
+			hashing.enterMessage(messageToEncrypt);
+			hashing.doHashEncoding();
+			decryptedMessage.setText(hashing.showHashedMessage());
+			
+			
+		}
 	}
 	String InitializeAlgo(int index) {
 		switch(index) {
 		case 0:{
 			//ASE
 			_encryptDecrypt=new ASE_algorithm();
+			encrypt=true;
 			return "ASE_algorithm";
 		}
 			
 		case 1:{
 			//ASE
 			_encryptDecrypt=new caesarChiper();
+			encrypt=true;
 			return "caesarChiper";
 	}
 	
 		case 2:{
 			//ASE
 			_encryptDecrypt=new RC4();
+			encrypt=true;
 			return "RC4";
+			
 			}
+		
+		case 3:{
+		//simple hash
+			hashing=new hashAction();
+			encrypt=false;
+			return"hashAction";
+			
+		}
+		case 4:{
+			hashing=new SHA3Hashing();
+			encrypt=false;
+			return "SHA3Hashing";
+		}
 		}
 		return null;
 	}
