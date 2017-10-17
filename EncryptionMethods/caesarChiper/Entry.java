@@ -8,7 +8,7 @@ public class Entry {
 	        System.out.println("Starting caesarChiper");
 			System.out.println("Sending message"+" "+message);
 			encryptDecrypt _caesarChiper=new caesarChiper();
-			_caesarChiper.enterMessage(message);
+			_caesarChiper.setMessage(message);
 			_caesarChiper.startEncryption();
 			String encryptedMessage=_caesarChiper.getEncryptedData();
 			System.out.println("encryptedMessage is  "+encryptedMessage);

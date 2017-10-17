@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import AES.ASE_algorithm;
+import AES.AES_algorithm;
 import RC4Encryption.RC4;
 import caesarChiper.caesarChiper;
 import hashFunction.hashAction;
@@ -91,7 +91,7 @@ public class ShowEncryptionWindow {
 		//messageEntry.setText("Ada");
 		if(encrypt) {
 		System.out.println("Sending message"+" "+messageToEncrypt);
-		_encryptDecrypt.enterMessage(messageToEncrypt);
+		_encryptDecrypt.setMessage(messageToEncrypt);
 		_encryptDecrypt.startEncryption();
 		_encryptDecrypt.startDecryption();
 		encryptedMessage.setText(_encryptDecrypt.getEncryptedData());
@@ -110,38 +110,34 @@ public class ShowEncryptionWindow {
 		switch(index) {
 		case 0:{
 			//ASE
-			_encryptDecrypt=new ASE_algorithm();
-			encrypt=true;
-			return "ASE_algorithm";
-		}
-			
-		case 1:{
-			//ASE
 			_encryptDecrypt=new caesarChiper();
 			encrypt=true;
 			return "caesarChiper";
 	}
-	
-		case 2:{
+		
+			
+		case 1:{
 			//ASE
 			_encryptDecrypt=new RC4();
 			encrypt=true;
 			return "RC4";
+		}
 			
-			}
-		
-		case 3:{
-		//simple hash
+	
+		case 2:{
+			//simple hash
 			hashing=new hashAction();
 			encrypt=false;
 			return"hashAction";
-			
-		}
-		case 4:{
+			}
+		
+		case 3:{
 			hashing=new SHA3Hashing();
 			encrypt=false;
 			return "SHA3Hashing";
+			
 		}
+		
 		}
 		return null;
 	}

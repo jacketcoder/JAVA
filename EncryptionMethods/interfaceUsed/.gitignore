@@ -1,2 +1,6 @@
 /encryptDecrypt.class
 /Hashing.class
+/getData.class
+/handleData.class
+/encrypt.class
+/decrypt.class

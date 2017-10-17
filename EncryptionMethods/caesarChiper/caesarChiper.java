@@ -1,5 +1,8 @@
 package caesarChiper;
 
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
 import interfaceUsed.encryptDecrypt;
 
 public class caesarChiper implements encryptDecrypt {
@@ -15,6 +18,7 @@ public class caesarChiper implements encryptDecrypt {
 		_message=new message();
 		_encryptionAlgo=new encryptionAlgo();
 		_decryptionAlgo=new decryptionAlgo();
+	
 		
 	}
 	public void startEncryption() {
@@ -35,8 +39,28 @@ public class caesarChiper implements encryptDecrypt {
 		return _decryptionAlgo.getDecryptedMessage();
 	}
 	@Override
-	public void enterMessage(String messageToEncrypt) {
-		_message.setMessage(messageToEncrypt);
+	public void startEncryption(String key, String messageToEncrypt) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startEncryption(PublicKey key, String messageToEncrypt) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startDecryption(PrivateKey key, String messageToDecrypt) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startDecryption(String key, String chiperText) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setMessage(String message) {
+		  _message.setMessage(message);
 		// TODO Auto-generated method stub
 		
 	}

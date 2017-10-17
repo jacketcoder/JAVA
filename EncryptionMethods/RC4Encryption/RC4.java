@@ -1,4 +1,7 @@
 package RC4Encryption;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
 import interfaceUsed.encryptDecrypt;
 public class RC4 implements encryptDecrypt {
 	message _message;
@@ -33,9 +36,32 @@ public class RC4 implements encryptDecrypt {
 		return new String(convertIntToText(_PRGA.getDecryptText()));
 		
 	}
+	
 	@Override
-	public void enterMessage(String messageToEncrypt) {
-		_message.setMessage(messageToEncrypt);
+	public void startEncryption(String key, String messageToEncrypt) {
+		// TODO Auto-generated method stub
+		startEncryption();
+		
+	}
+	@Override
+	public void startEncryption(PublicKey key, String messageToEncrypt) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startDecryption(PrivateKey key, String messageToDecrypt) {
+		// TODO Auto-generated method stub
+	
+		
+	}
+	@Override
+	public void startDecryption(String key, String chiperText) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setMessage(String message) {
+		  _message.setMessage(message);
 		// TODO Auto-generated method stub
 		
 	}

@@ -15,7 +15,7 @@ public class testingCaesarChiper {
 	
 	@Test
 	public void test() {
-		_caesarChiperTest.enterMessage(messageToEncode);
+		_caesarChiperTest.setMessage(messageToEncode);
 		_caesarChiperTest.startEncryption();
 		assertEquals(encodedMessage,_caesarChiperTest.getEncryptedData());
 		_caesarChiperTest.startDecryption();
