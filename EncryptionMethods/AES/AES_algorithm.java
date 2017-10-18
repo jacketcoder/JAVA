@@ -23,7 +23,7 @@ import interfaceUsed.decrypt;
 import interfaceUsed.encrypt;
 import interfaceUsed.encryptDecrypt;
 
-public class AES_algorithm implements encrypt,decrypt {
+public class AES_algorithm implements encrypt,decrypt,encryptDecrypt {
 	Cipher AESchiper;
 	String decryptMessage;
 	String encryptedMessage;
@@ -102,5 +102,30 @@ public class AES_algorithm implements encrypt,decrypt {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}		
+	}
+	@Override
+	public void startEncryption(PublicKey key, String messageToEncrypt) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startDecryption(PrivateKey key, String messageToDecrypt) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startEncryption() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void startDecryption() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setMessage(String message) {
+		// TODO Auto-generated method stub
+		
 	}
 }

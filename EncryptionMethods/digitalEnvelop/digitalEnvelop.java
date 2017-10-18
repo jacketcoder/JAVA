@@ -20,10 +20,10 @@ public class digitalEnvelop {
 	encryptDecrypt publicRSAEncryptionAlgo;
 	encryptDecrypt AESAlgo;
 	JSONObject json;
-	public digitalEnvelop() {
-		AESAlgo=new AES_algorithm();
-		publicRSAEncryptionAlgo=new RSA();
-		json=new JSONObject();
+	public digitalEnvelop(encryptDecrypt aes,encryptDecrypt rsa,JSONObject json) {
+		AESAlgo=aes;
+		publicRSAEncryptionAlgo=rsa;
+		this.json=json;
 	}
 	void encrypt(String key,PublicKey publicKey,String message) {
 		AESAlgo.startEncryption(key,message);
