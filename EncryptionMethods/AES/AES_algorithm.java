@@ -58,6 +58,10 @@ public class AES_algorithm implements encrypt,decrypt,encryptDecrypt {
 		 secretKeySpec= new SecretKeySpec(keySpace.getBytes(),"AES");
 		 return secretKeySpec;
 	}
+	 SecretKeySpec generateKey(byte[] keySpace) {
+		 secretKeySpec= new SecretKeySpec(keySpace,"AES");
+		 return secretKeySpec;
+	}
 	@Override
 	public String getEncryptedData() {
 		return encryptedMessage;
@@ -88,7 +92,40 @@ public class AES_algorithm implements encrypt,decrypt,encryptDecrypt {
 				}	
 	}
 	@Override
+	public void startDecryption(byte[] key,String chiperText) {
+		try {
+			
+			//System.out.println(ivP);	
+			byte []temp=Base64.decode(chiperText);
+			byte[] ivpattern=Arrays.copyOfRange(temp, 0, 16);
+			byte[] message=Arrays.copyOfRange(temp, 16, temp.length);
+			
+					AESchiper.init(Cipher.DECRYPT_MODE,generateKey(key),new IvParameterSpec(ivpattern));
+					//System.out.println(new String(Base64.encode(iv)));
+					decryptMessage=new String(AESchiper.doFinal(message));
+				} catch (InvalidAlgorithmParameterException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+	}
+	@Override
 	public void startEncryption(String key, String messageToEncrypt) {
+		// TODO Auto-generated method stub
+		try {
+				byte[] randomIV=generateRandomIv();
+				AESchiper.init(Cipher.ENCRYPT_MODE,generateKey(key),new IvParameterSpec(randomIV));
+				byte[] cipherText=AESchiper.doFinal(messageToEncrypt.getBytes());
+				byte[] cipherMessageToStore=new byte[randomIV.length+cipherText.length];
+				System.arraycopy(randomIV, 0, cipherMessageToStore, 0, randomIV.length);
+				System.arraycopy(cipherText, 0, cipherMessageToStore, randomIV.length, cipherText.length);
+				encryptedMessage=new String(Base64.encode(cipherMessageToStore));
+			} catch (InvalidAlgorithmParameterException|InvalidKeyException|BadPaddingException | IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+	}
+	@Override
+	public void startEncryption(byte[] key, String messageToEncrypt) {
 		// TODO Auto-generated method stub
 		try {
 				byte[] randomIV=generateRandomIv();
@@ -128,4 +165,5 @@ public class AES_algorithm implements encrypt,decrypt,encryptDecrypt {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
